@@ -117,6 +117,7 @@ def get_pixels_from_svg_path(shapes):
 
 #app declaration and layout
 app = DashProxy(transforms=[MultiplexerTransform()],external_stylesheets=[dbc.themes.DARKLY])
+server = app.server
 app.layout = dbc.Container(
     [
         html.H1("MNIST Digit Classifier",className="mt-3"),
