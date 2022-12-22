@@ -52,9 +52,9 @@ tenacity==8.1.0
 tensorboard==2.11.0
 tensorboard-data-server==0.6.1
 tensorboard-plugin-wit==1.8.1
-tensorflow-cpu==2.9.0
-tensorflow-estimator==2.9.0
-tensorflow-intel==2.9.0
+tensorflow-cpu==2.5.0
+tensorflow-estimator==2.5.0
+tensorflow-intel==2.5.0
 tensorflow-io-gcs-filesystem==0.29.0
 termcolor==2.1.1
 typing_extensions==4.4.0
