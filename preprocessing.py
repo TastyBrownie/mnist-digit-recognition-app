@@ -1,5 +1,5 @@
 import numpy as np
-import tkinter as tk
+
 import tensorflow as tf
 from functools import partial
 import math
@@ -110,39 +110,3 @@ def reset(canvas,pixels):
 
 
 
-def main():
-    pixels = np.zeros((28,28))
-    model=tf.keras.models.load_model("my_first.model")
-
-    root = tk.Tk()
-
-    
-
-    canvas = tk.Canvas(root,width=280, height=280, borderwidth=3,relief="groove", highlightthickness=0)
-    canvas.grid(column=0, row=0,sticky = tk.W)
-
-    display_panel = tk.Label(root,text="",font=("Arial", 100),width=1,borderwidth=0)
-    display_panel.grid(column=1, row=0,columnspan=1)
-
-    reset_button = tk.Button(root,command=partial(reset,pixels=pixels,canvas=canvas))
-    reset_button.config(text="RESET")
-    reset_button.grid(column=0,row=1)
-
-    prediction_label = tk.Button(root,command=partial(print_prediction,pixels=pixels,model=model,label=display_panel))
-    prediction_label.config(text="PREDICT")
-    prediction_label.grid(column=1,row=1)
-
-    
-    root.rowconfigure(0,weight=4)
-    root.rowconfigure(1,weight=1)
-    root.columnconfigure(0, weight=1)
-    root.columnconfigure(1,weight=1,minsize=280)
-
-    
-    
-    canvas.bind("<B1-Motion>",partial(fill_pixels,canvas=canvas,pixels=pixels))
-    root.bind("<d>",partial(display,pixels=pixels))
-    root.mainloop()
-
-if __name__ == "__main__":
-    main()
