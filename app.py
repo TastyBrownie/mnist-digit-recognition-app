@@ -6,12 +6,12 @@ from dash_extensions.enrich import Output, DashProxy, Input, MultiplexerTransfor
 import dash_bootstrap_components as dbc
 import svgelements
 import numpy as np
-from tensorflow import keras
+from numpy_model import DigitPredictor
 from preprocessing import center_by_mass
 from dash_bootstrap_templates import load_figure_template
 
 #predictive model
-MODEL = keras.models.load_model("my_first.model")
+MODEL = DigitPredictor(np.load('model_weights.npz'))
 
 #global styling
 TEMPLATE = 'darkly'
@@ -192,7 +192,7 @@ def on_draw(relayout_data):
     shapes = relayout_data["shapes"]
     pixels = get_pixels_from_svg_path(shapes)
     pixels = center_by_mass(pixels)
-    prediction = np.argmax(MODEL.predict(np.array([pixels]))[0])
+    prediction = MODEL.predict(pixels)
     return prediction_fig(prediction,"green"),preprocess_fig(pixels)
 
 if __name__ == "__main__":

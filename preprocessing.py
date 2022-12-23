@@ -1,7 +1,4 @@
 import numpy as np
-
-import tensorflow as tf
-from functools import partial
 import math
 from matplotlib import pyplot as plt
 
@@ -107,6 +104,5 @@ def print_prediction(pixels,model,label):
 def reset(canvas,pixels):
     canvas.delete("all")
     pixels[:,:] = 0
-
 
 
